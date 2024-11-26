@@ -2,7 +2,7 @@ interface StyleObject {
   [key: string]: string;
 }
 
-export default function Algorithmism(){
+export default function Algorithmism() {
   const compareStyles = (css1: string, css2: string): boolean => {
     const extractStyles = (css: string) => {
       const styleObject: StyleObject = {};
@@ -45,14 +45,6 @@ export default function Algorithmism(){
     });
   };
 
-  useEffect(() => {
-    const isStyleMatch = compareStyles(collect, transcss);
-    if (isStyleMatch) {
-      console.log(1);
-      // You could also add additional logic here, like updating game state
-    }
-  }, [transcss]);
-
   function styleToObject(transcss: string): StyleObject {
     const styleObject: StyleObject = {};
     const cssRules = transcss.match(/{([^}]*)}/);
@@ -74,7 +66,5 @@ export default function Algorithmism(){
     return styleObject;
   }
 
-  return(   
-    
-  )
+  return { compareStyles, styleToObject };
 }
