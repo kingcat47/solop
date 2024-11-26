@@ -3,12 +3,16 @@ import styles from "./styles.module.scss";
 
 interface ShowContainerProps {
   children?: React.ReactElement;
+  className?: string;
 }
 
-export default function ShowContainer({ children }: ShowContainerProps) {
+export default function ShowContainer({
+  children,
+  className,
+}: ShowContainerProps) {
   return (
     <>
-      <div className={styles.container}>{children}</div>
+      <div className={[styles.container, className].join(" ")}>{children}</div>
     </>
   );
 }

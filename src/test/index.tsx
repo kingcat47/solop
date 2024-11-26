@@ -1,9 +1,8 @@
 import { useState } from "react";
-import ShowContainer from "../components/ShowContainer";
+import ShowContainer from "../../components/ShowContainer";
 import styles from "./styles.module.scss";
-import Editor from "@monaco-editor/react";
-import CodeMirror from "@uiw/react-codemirror";
-import { css } from "@codemirror/lang-css";
+import EditorBox from "../../components/EditorBos";
+
 interface StyleObject {
   [key: string]: string;
 }
@@ -21,7 +20,7 @@ width: 100px;
   background-color: blue;
 }`;
 
-export default function Test() {
+export default function Game() {
   const [transcss, setTranscss] = useState(usercss);
 
   const handleEditorChange = (value: string | undefined) => {
@@ -33,36 +32,22 @@ export default function Test() {
   return (
     <div className={styles.container}>
       <div className={styles.main}>
-        <ShowContainer>
-          <div className="dap" style={styleToObject(collect)}></div>
-        </ShowContainer>
-        <ShowContainer>
-          <div className="mun" style={styleToObject(transcss)}></div>
-        </ShowContainer>
-        <div style={{ height: "300px", border: "1px solid blue" }}>
-          <Editor
-            height="100%"
-            defaultLanguage="css"
-            theme="vs-dark"
-            value={transcss}
-            onChange={handleEditorChange}
-            options={{
-              minimap: { enabled: false },
-              fontSize: 14,
-              lineNumbers: "on",
-              roundedSelection: false,
-              scrollBeyondLastLine: false,
-              automaticLayout: true,
-            }}
-          />
-          {/* <CodeMirror
-            value={transcss}
-            height="300px"
-            extensions={[css()]}
-            onChange={(value) => setTranscss(value)}
-            theme="dark" // 또는 "light"
-          /> */}
+        <div className={styles.right}>right</div>
+        <div className={styles.mid}>
+          <ShowContainer className={styles.showcontainer}>
+            <div className="dap" style={styleToObject(collect)}></div>
+          </ShowContainer>
+          <ShowContainer className={styles.showcontainer}>
+            <div className="mun" style={styleToObject(transcss)}></div>
+          </ShowContainer>
+          <div className={styles.editor}>
+            <EditorBox
+              value={transcss}
+              onChange={handleEditorChange}
+            ></EditorBox>
+          </div>
         </div>
+        <div className={styles.left}>left</div>
       </div>
     </div>
   );
@@ -91,3 +76,12 @@ function styleToObject(transcss: string): StyleObject {
 }
 
 //보여주는칸 css입력칸 타이머 점수 남은까방권갯수 힌트
+{
+  /* <CodeMirror
+            value={transcss}
+            height="300px"
+            extensions={[css()]}
+            onChange={(value) => setTranscss(value)}
+            theme="dark" // 또는 "light"
+          /> */
+}

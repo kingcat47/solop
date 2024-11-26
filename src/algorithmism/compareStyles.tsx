@@ -1,31 +1,8 @@
-import { useState, useEffect } from "react";
-import ShowContainer from "../../components/ShowContainer";
-import styles from "./styles.module.scss";
-import EditorBox from "../../components/EditorBos";
-import Munjea from "../../components/Munjea/index";
-import Algorithmism from "../../algorithmism/compareStyles";
 interface StyleObject {
   [key: string]: string;
 }
 
-const usercss = `.mun {
-  width: 100px;
-  height: 100px;
-  background-color: red;
-}`;
-
-const collect = Munjea().Munlist[2];
-
-export default function Game() {
-  const [transcss, setTranscss] = useState(usercss);
-
-  const handleEditorChange = (value: string | undefined) => {
-    if (value !== undefined) {
-      setTranscss(value);
-    }
-  };
-
-  // Function to normalize and compare styles
+export default function Algorithmism(){
   const compareStyles = (css1: string, css2: string): boolean => {
     const extractStyles = (css: string) => {
       const styleObject: StyleObject = {};
@@ -97,26 +74,7 @@ export default function Game() {
     return styleObject;
   }
 
-  return (
-    <div className={styles.container}>
-      <div className={styles.main}>
-        <div className={styles.right}>right</div>
-        <div className={styles.mid}>
-          <ShowContainer className={styles.showcontainer}>
-            <div style={styleToObject(collect)}></div>
-          </ShowContainer>
-          <ShowContainer className={styles.showcontainer}>
-            <div className="mun" style={styleToObject(transcss)}></div>
-          </ShowContainer>
-          <div className={styles.editor}>
-            <EditorBox
-              value={transcss}
-              onChange={handleEditorChange}
-            ></EditorBox>
-          </div>
-        </div>
-        <div className={styles.left}>left</div>
-      </div>
-    </div>
-  );
+  return(   
+    
+  )
 }
