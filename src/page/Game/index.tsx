@@ -7,11 +7,7 @@ import Algorithmism from "../../algorithmism/compareStyles";
 import TimeBox from "../../components/Timebox";
 import CheckBox from "../../components/CheckBox";
 
-const usercss = `.mun {
-  width: 100px;
-  height: 100px;
-  background-color: red;
-}`;
+const usercss = `.mun {   width: 100px;   height: 100px;   background-color: red; }`;
 
 export default function Game() {
   const [movelist, setmovelist] = useState(0);
@@ -33,15 +29,18 @@ export default function Game() {
   useEffect(() => {
     const isStyleMatch = Algorithmism().compareStyles(collect, transcss);
     if (isStyleMatch) {
-      if (movelist < Munjea().Munlist.length - 1) {
-        setmovelist(movelist + 1);
-      } else {
-        // 최종 점수 계산 (맞춘 레벨 수 - 실패 횟수)
-        setScore(movelist + 1 - failCount);
-        console.log("성공!");
-      }
+      // 상태 업데이트를 다음 렌더링 사이클로 미루기
+      requestAnimationFrame(() => {
+        if (movelist < Munjea().Munlist.length - 1) {
+          setmovelist((prev) => prev + 1);
+        } else {
+          // 최종 점수 계산 (맞춘 레벨 수 - 실패 횟수)
+          setScore((prev) => prev + movelist + 1 - failCount);
+          console.log("성공!");
+        }
+      });
     }
-  }, [transcss]);
+  }, [transcss, collect, movelist, failCount]);
 
   return (
     <div className={styles.container}>
