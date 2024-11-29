@@ -4,6 +4,8 @@ import styles from "./styles.module.scss";
 import EditorBox from "../../components/EditorBos";
 import Munjea from "../../components/Munjea/index";
 import Algorithmism from "../../algorithmism/compareStyles";
+import TimeBox from "../../components/Timebox";
+import CheckBox from "../../components/CheckBox";
 
 const usercss = `.mun {
   width: 100px;
@@ -11,10 +13,12 @@ const usercss = `.mun {
   background-color: red;
 }`;
 
-const collect = Munjea().Munlist[2];
-
 export default function Game() {
+  const [movelist, setmovelist] = useState(0);
+  const collect = Munjea().Munlist[movelist];
   const [transcss, setTranscss] = useState(usercss);
+  const [score, setScore] = useState(0);
+  const [failCount, setFailCount] = useState(0);
 
   const handleEditorChange = (value: string | undefined) => {
     if (value !== undefined) {
@@ -22,10 +26,20 @@ export default function Game() {
     }
   };
 
+  const handleTimeOut = () => {
+    setFailCount((prev) => prev + 1);
+  };
+
   useEffect(() => {
     const isStyleMatch = Algorithmism().compareStyles(collect, transcss);
     if (isStyleMatch) {
-      console.log(1);
+      if (movelist < Munjea().Munlist.length - 1) {
+        setmovelist(movelist + 1);
+      } else {
+        // 최종 점수 계산 (맞춘 레벨 수 - 실패 횟수)
+        setScore(movelist + 1 - failCount);
+        console.log("성공!");
+      }
     }
   }, [transcss]);
 
@@ -50,7 +64,11 @@ export default function Game() {
             ></EditorBox>
           </div>
         </div>
-        <div className={styles.left}>left</div>
+        <div className={styles.left}>
+          left
+          <TimeBox movelist={movelist} onTimeOut={handleTimeOut} />
+          <CheckBox result={score}></CheckBox>
+        </div>
       </div>
     </div>
   );
