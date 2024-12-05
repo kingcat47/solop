@@ -13,7 +13,7 @@ export default function Start() {
         <div className={styles.main}>
           <ButtonBox
             className={styles.start}
-            text={"Strat"}
+            text={"Start"}
             onClick={getstart}
           ></ButtonBox>
         </div>

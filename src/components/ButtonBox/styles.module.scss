@@ -7,5 +7,9 @@
   flex-shrink: 0;
   border-radius: 30px;
   border: 0.537px solid #000;
-  background: #dad9e0;
+  background: #604dc9;
+
+  &:hover {
+    background-color: orange;
+  }
 }

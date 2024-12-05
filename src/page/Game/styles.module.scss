@@ -27,3 +27,37 @@
   height: 200px;
   border-radius: 10px;
 }
+
+.timebox {
+  width: 100px;
+  height: 100px;
+  background-color: aqua;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hintbox {
+  width: 100px;
+  height: 100px;
+  background-color: bisque;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hintshow {
+  width: 100px;
+  height: 500px;
+  background-color: beige;
+  display: flex;
+  justify-content: center;
+}
+
+.ClearBox {
+  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

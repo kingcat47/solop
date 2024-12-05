@@ -10,6 +10,7 @@ export default function EditorBox({ value, onChange }: EditorBoxProps) {
     <>
       <Editor
         // height="100%"
+
         defaultLanguage="css"
         theme="vs-dark"
         value={value}
