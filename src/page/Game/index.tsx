@@ -69,7 +69,7 @@ export default function Game() {
 
   // 레벨 변경 시 타이머 초기화
   useEffect(() => {
-    setTtime(10);
+    setTtime(20);
     // 타이머 다시 시작
     setIsTimerRunning(true);
     // highlight-end
@@ -103,7 +103,7 @@ export default function Game() {
   function alltanos() {
     setmovelist(1);
     setTranscss(usercss);
-    setTtime(10);
+    setTtime(20);
     setIsTimerRunning(true);
     setScore(0);
   }
