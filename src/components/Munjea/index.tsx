@@ -7,7 +7,7 @@ export function MunJea() {
     ".dap{ width: 100px; height: 100px; background-color: green;}",
     ".dap{ width: 100px; height: 100px; border: 5px solid orange;}",
     ".dap{ width: 200px; height: 100px; background-color: orange;}",
-    ".dap{ width: 150px; height: 150px; border-radius: 50%; background-color: orange;}",
+    ".dap{ width: 100px; height: 100px; border-radius: 50%; background-color: orange;}",
     ".dap{ width: 100px; height: 100px; transform: rotate(45deg); background-color: orange;}",
     ".dap{ width: 100px; height: 100px; background-image: linear-gradient(to right, red, yellow);}",
     ".dap{ width: 100px; height: 100px; box-shadow: 5px 5px 10px gray; background-color: aqua;}",
