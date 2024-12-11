@@ -26,6 +26,7 @@ export default function Game() {
   const [score, setScore] = useState(0);
   const [highscore, setHighscore] = useState(0);
   const myFancyHobinAudio = new Audio(SUAdio);
+  myFancyHobinAudio.volume = 0.5;
   const [lastmodal, setlastmodal] = useState(false);
   const handleEditorChange = (value: string | undefined) => {
     if (value !== undefined) {
@@ -115,7 +116,7 @@ export default function Game() {
     <div className={styles.container}>
       <div className={styles.main}>
         <div className={styles.right}>
-          right<div className={styles.hintbox}>hint</div>
+          <div className={styles.hintbox}>hint</div>
           {isTimerRunning != true && movelist < MunJea().Munlist.length - 1 && (
             <div className={styles.hintshow}>{MunJea().Hint[movelist]}</div>
           )}
@@ -140,7 +141,6 @@ export default function Game() {
           </div>
         </div>
         <div className={styles.left}>
-          left
           <Retrybox
             onClick={() => {
               alltanos();
